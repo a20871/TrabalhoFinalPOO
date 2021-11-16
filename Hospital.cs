@@ -8,15 +8,17 @@ namespace TrabalhoFinal
 {
     /// <summary>
     /// @brief 
-    /// @author Sérgio Martins
-    /// <p>a20871@alunos.ipca.pt</p>
+    /// @author Sérgio Martins, Jéssica Costa
+    /// <p>a20871@alunos.ipca.pt</p>a20872@alunos.ipca.pt
     /// @date 11/16/2021 4:55:51 PM
     /// </summary>
     public class Hospital
     {
         #region Attributes
+        int codigo;
+        string nome;
 
-
+        //falta completar
 
         #endregion
 
