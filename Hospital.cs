@@ -12,11 +12,12 @@ namespace TrabalhoFinal
     /// <p>a20871@alunos.ipca.pt</p>a20872@alunos.ipca.pt
     /// @date 11/16/2021 4:55:51 PM
     /// </summary>
-    public class Hospital
+    public class Hospital:Covid
     {
         #region Attributes
         int codigo;
         string nome;
+        Distrito distritoHosp;
 
         //falta completar
 

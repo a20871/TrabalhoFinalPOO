@@ -12,10 +12,11 @@ namespace TrabalhoFinal
     /// <p>a20871@alunos.ipca.pt</p>a20872@alunos.ipca.pt
     /// @date 11/16/2021 4:53:42 PM
     /// </summary>
-    public class Internamento
+    public class Internamento:Hospital
     {
         #region Attributes
-
+        DateTime dataEntrada;
+        DateTime dataSaida;
 
 
 
