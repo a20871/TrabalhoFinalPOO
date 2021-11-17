@@ -8,5 +8,8 @@ namespace TrabalhoFinal
 {
     interface IData
     {
+        int ContaDias(int num);
+      
+        
     }
 }

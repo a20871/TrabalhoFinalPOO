@@ -8,17 +8,17 @@ namespace TrabalhoFinal
 {
     /// <summary>
     /// @brief 
-    /// @author Sérgio Martins
-    /// <p>a20871@alunos.ipca.pt</p>
+    /// @author Sérgio Martins, Jéssica Costa
+    /// <p>a20871@alunos.ipca.pt</p>a20872@alunos.ipca.pt
     /// @date 11/16/2021 4:50:51 PM
     /// </summary>
-    public class Utente
+    public class Utente 
     {
         public enum Genero { MASCULINO, FEMININO };
-        public enum Distrito { Aveiro, Beja, Braga, Braganca, CasteloBranco, Coimbra, Evora, Faro, Guarda, Leiria, Lisboa, Portalegre, Porto, Santarem, Setubal, VianaCastelo, VilaReal, Viseu }
+        public enum Distrito { Aveiro, Beja, Braga, Braganca, CasteloBranco, Coimbra, Evora, Faro, Guarda, Leiria, Lisboa, Portalegre, Porto, Santarem, Setubal, VianaCastelo, VilaReal, Viseu };
         #region Attributes
 
-        string numUtente;
+        string numeroUtente;
         string nome;
         DateTime dataNascimento;
         Genero generoU;
@@ -28,15 +28,20 @@ namespace TrabalhoFinal
 
         #region Constructors
 
-        public Utente()
+
+        public Utente(string numero, string nome, string dataNascimento, Genero generoU, Distrito distritoU)
         {
+            this.NumUtente = numero;
+            this.Nome = nome;
+            this.DataNascimento = Convert.ToDateTime(dataNascimento);
+            this.GeneroU = generoU;
+            this.DistritoU = distritoU;
 
         }
-        public Utente(string numero, string nome, DateTime dataNascimento, Genero generoU, Distrito distritoU)
-        {
+
+      
 
 
-        }
 
         #endregion
 
@@ -45,24 +50,28 @@ namespace TrabalhoFinal
 
         public string NumUtente
         {
-            get { return numUtente; }
+            get { return numeroUtente; }
             set
             {
-                //Verifica se tem 9 caracteres e todos são algarismos
-                if (value.Length != 9 || !numUtente.All(char.IsDigit))
-                {
-                    Console.WriteLine("Erro na inserção.");
-                    return;
 
+                //Verifica se tem 9 caracteres e todos são algarismos
+                {
+                    if (value.Length == 9 || numeroUtente.All(char.IsDigit))
+                    {
+                        numeroUtente = value;
+                    }
                 }
-                else
-                    numUtente = value;
             }
         }
 
         public string Nome
         {
             get { return nome; }
+            set
+            {
+                if (value.Length > 0)
+                    nome = value;
+            }
 
         }
 
@@ -86,24 +95,29 @@ namespace TrabalhoFinal
         public Distrito DistritoU
         {
             get { return distritoU; }
-            set { if ((value == Distrito.Aveiro) || (value==Distrito.Beja) || (value==Distrito.Braga) || (value==Distrito.Braganca) || (value==Distrito.CasteloBranco) || (value==Distrito.Coimbra) || (value==Distrito.Evora) || (value==Distrito.Faro) || (value==Distrito.Guarda) || (value==Distrito.Leiria) || (value==Distrito.Lisboa) || (value==Distrito.Portalegre) || (value==Distrito.Porto) || (value==Distrito.Santarem) || (value==Distrito.Setubal) || (value==Distrito.VianaCastelo) || (value==Distrito.VilaReal) || (value==Distrito.Viseu) )
+            set
+            {
+                if ((value == Distrito.Aveiro) || (value == Distrito.Beja) || (value == Distrito.Braga) || (value == Distrito.Braganca) || (value == Distrito.CasteloBranco) || (value == Distrito.Coimbra) || (value == Distrito.Evora) || (value == Distrito.Faro) || (value == Distrito.Guarda) || (value == Distrito.Leiria) || (value == Distrito.Lisboa) || (value == Distrito.Portalegre) || (value == Distrito.Porto) || (value == Distrito.Santarem) || (value == Distrito.Setubal) || (value == Distrito.VianaCastelo) || (value == Distrito.VilaReal) || (value == Distrito.Viseu))
                     distritoU = value;
+               
             }
         }
 
-            #endregion
+       
 
-            #region Others
+        #endregion
 
-
-
-            #endregion
-
-            #region Destructors
+        #region Others
 
 
-            #endregion
 
-        
+        #endregion
+
+        #region Destructors
+
+
+        #endregion
+
+
     }
 }
