@@ -18,8 +18,8 @@ namespace TrabalhoFinal
         public enum Distrito { Aveiro, Beja, Braga, Braganca, CasteloBranco, Coimbra, Evora, Faro, Guarda, Leiria, Lisboa, Portalegre, Porto, Santarem, Setubal, VianaCastelo, VilaReal, Viseu };
         #region Attributes
 
-        string numeroUtente;
-        string nome;
+        protected string numeroUtente;
+        protected string nome;
         DateTime dataNascimento;
         Genero generoU;
         Distrito distritoU;
@@ -28,7 +28,14 @@ namespace TrabalhoFinal
 
         #region Constructors
 
-
+        /// <summary>
+        /// Construtor Utente base
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <param name="nome"></param>
+        /// <param name="dataNascimento"></param>
+        /// <param name="generoU"></param>
+        /// <param name="distritoU"></param>
         public Utente(string numero, string nome, string dataNascimento, Genero generoU, Distrito distritoU)
         {
             this.NumUtente = numero;
@@ -47,7 +54,9 @@ namespace TrabalhoFinal
 
         #region Properties
 
-
+        /// <summary>
+        /// Propriedade para número de Utente, verifica se tem 9 dígitos
+        /// </summary>
         public string NumUtente
         {
             get { return numeroUtente; }
@@ -64,6 +73,9 @@ namespace TrabalhoFinal
             }
         }
 
+        /// <summary>
+        /// Propriedade para nome. Não permite atributo vazio
+        /// </summary>
         public string Nome
         {
             get { return nome; }
@@ -75,12 +87,19 @@ namespace TrabalhoFinal
 
         }
 
+        /// <summary>
+        /// Data de Nascimento
+        /// </summary>
         public DateTime DataNascimento
         {
             get { return dataNascimento; }
             set { dataNascimento = value.Date; }
         }
 
+
+        /// <summary>
+        /// Género - escolha opção
+        /// </summary>
         public Genero GeneroU
         {
             get { return generoU; }
@@ -92,6 +111,9 @@ namespace TrabalhoFinal
             }
         }
 
+        /// <summary>
+        /// Distrito de morada - escolha opção
+        /// </summary>
         public Distrito DistritoU
         {
             get { return distritoU; }
@@ -108,7 +130,12 @@ namespace TrabalhoFinal
         #endregion
 
         #region Others
-        public int CalculaIdade(DateTime DataNascimento)
+       
+        /// <summary>
+        /// Calcula idade
+        /// </summary>
+        /// <returns>Idade em Anos</returns>
+        public int CalculaIdade()
         {
             int idade = 0;
             idade = DateTime.Today.Year - dataNascimento.Year;

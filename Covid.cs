@@ -13,7 +13,7 @@ namespace TrabalhoFinal
     /// @date 11/16/2021 4:52:04 PM
     /// </summary>
     /// 
-    public class Covid : Utente,IData
+    public class Covid //: Utente,IData
     {
         public enum Estado { LIGEIRO, INTERNADO, UCI }//doente que tem sintomas ligeiros, esta internado ou em cuidados intensivos
 
@@ -28,14 +28,15 @@ namespace TrabalhoFinal
         #endregion
 
         #region Constructors
-
-        public Covid(string dataDiagnostico, int quantidadeContacto, Estado estadoUtente, string dataFimDoenca, string motivoFimDoenca):base()
+        
+        public Covid(string dataDiagnostico, int quantidadeContacto, Estado estadoUtente, string dataFimDoenca, string motivoFimDoenca) : base()
         {
             DataDiagnostico = Convert.ToDateTime(dataDiagnostico);
             QuantidadeContacto = quantidadeContacto;
             EstadoDoente = estadoUtente;
             DataFimDoenca = Convert.ToDateTime(dataFimDoenca);
             MotivoFimDoenca = motivoFimDoenca;
+            
         }
 
         #endregion
@@ -101,10 +102,10 @@ namespace TrabalhoFinal
             }
             return (DataFimDoenca - DataDiagnostico).Days;
         }*/
-        public int ContaDias(int num)
-        {
-            throw new NotImplementedException();
-        }
+        //public int ContaDias(int num)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         #endregion
 
