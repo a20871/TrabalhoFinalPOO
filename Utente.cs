@@ -108,7 +108,15 @@ namespace TrabalhoFinal
         #endregion
 
         #region Others
-
+        public int CalculaIdade(DateTime DataNascimento)
+        {
+            int idade = 0;
+            idade = DateTime.Today.Year - dataNascimento.Year;
+            if (DateTime.Today.DayOfYear < dataNascimento.DayOfYear)
+                idade = idade - 1;
+            return idade;
+        }
+    
 
 
         #endregion
