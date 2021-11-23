@@ -23,6 +23,7 @@ namespace TrabalhoFinal
         DateTime dataNascimento;
         Genero generoU;
         Distrito distritoU;
+        List <Estado> n ;
 
         #endregion
 
@@ -36,13 +37,14 @@ namespace TrabalhoFinal
         /// <param name="dataNascimento"></param>
         /// <param name="generoU"></param>
         /// <param name="distritoU"></param>
-        public Utente(string numero, string nome, string dataNascimento, Genero generoU, Distrito distritoU)
+        public Utente(string numero, string nome, string dataNascimento, Genero generoU, Distrito distritoU, List<Estado> novoEst)
         {
             this.NumUtente = numero;
             this.Nome = nome;
             this.DataNascimento = Convert.ToDateTime(dataNascimento);
             this.GeneroU = generoU;
             this.DistritoU = distritoU;
+            this.NovoEstado = novoEst;
 
         }
 
@@ -123,6 +125,11 @@ namespace TrabalhoFinal
                     distritoU = value;
                
             }
+        }
+
+        public Estado NovoEstado
+        {  get;
+            set;
         }
 
        

@@ -13,31 +13,39 @@ namespace TrabalhoFinal
     /// @date 11/16/2021 4:52:04 PM
     /// </summary>
     /// 
-    public class Covid //: Utente,IData
+    public class Covid //: Utente
     {
-        public enum Estado { LIGEIRO, INTERNADO, UCI }//doente que tem sintomas ligeiros, esta internado ou em cuidados intensivos
+
+        //List<Covid> = new 
+        //public enum Estado { LIGEIRO, INTERNADO, UCI, MORTO, CURADO }//doente que tem sintomas ligeiros, esta internado ou em cuidados intensivos
 
         #region Attributes
 
         DateTime dataDiagnostico;//data em que foi diagnosticado com covid
         int quantidadeContacto;//quantidade de contactos de risco do doente
-        Estado estadoUtente;
+        //Estado estadoUtente;
         DateTime dataFimDoenca;//data em que a pessoa teve alta ou faleceu
         string motivoFimDoenca;//motivo pelo qual findou o periodo em esteve doente
+        int totCovid=0; //total de casos diagnosticados
 
         #endregion
 
         #region Constructors
         
-        public Covid(string dataDiagnostico, int quantidadeContacto, Estado estadoUtente, string dataFimDoenca, string motivoFimDoenca) : base()
+        public Covid(string dataDiagnostico, int quantidadeContacto, Estado estadoUtente)//, string dataFimDoenca, string motivoFimDoenca) : base()
         {
             DataDiagnostico = Convert.ToDateTime(dataDiagnostico);
             QuantidadeContacto = quantidadeContacto;
             EstadoDoente = estadoUtente;
             DataFimDoenca = Convert.ToDateTime(dataFimDoenca);
             MotivoFimDoenca = motivoFimDoenca;
+            totCovid++;
             
         }
+    public Covid(string dataAlteracao, Estado novoEstado, string motivo)
+    {
+
+    }
 
         #endregion
 
