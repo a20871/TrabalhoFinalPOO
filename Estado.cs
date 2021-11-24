@@ -40,14 +40,16 @@ namespace TrabalhoFinal
 
         }
 
-
+        /// <summary>
+        /// Novo Estado
+        /// </summary>
+        /// <param name="d"> Data</param>
+        /// <param name="m"> Situação Enum Situacao</param>
         public Estado(DateTime d, Situacao m)
         {
             this.DataNovoEstado = Convert.ToDateTime(d);
             this.Sit = m;
         }
-
-
 
 
         #endregion

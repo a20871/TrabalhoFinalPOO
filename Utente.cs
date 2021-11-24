@@ -75,7 +75,7 @@ namespace TrabalhoFinal
         /// <returns>True or False</returns>
         public bool RegistaEstdoUtente(Estado e)
         {
-            //foreach(Utente u in uteb)  --------->????????
+            //foreach(Utente u in uteb) 
             return this.AddEstado(e);
             
         }
@@ -93,6 +93,17 @@ namespace TrabalhoFinal
             if (n == null) n = new List<Estado>();
             n.Add(e);
             return true;
+        }
+
+        public bool ConsultaEstado(Utente u, List<Utente> listagem)
+        {
+
+            foreach(Utente item in listagem)
+            {
+                Console.WriteLine(u.NovoEstado.ToString());
+            }
+            return true;
+          
         }
 
         /// <summary>

@@ -24,15 +24,27 @@ namespace TrabalhoFinal
             Utente a2 = new Utente("119234562", "Sérgio Martins", "07-12-81", Genero.MASCULINO, Distrito.Porto, Situacao.LIGEIRO);
 
             a1.AddEstado(Situacao.LIGEIRO, DateTime.Today );
-            Utentes hospital = new Utentes();
-
-            hospital.AddUTente(a1);
-
-
-
+            a1.AddEstado(Situacao.INTERNADO, DateTime.Today);
+            a1.AddEstado(Situacao.UCI, DateTime.Today);
+            a2.AddEstado(Situacao.OBITO, DateTime.Today);
 
             
-            Console.WriteLine(a1.Nome);
+
+            Utentes covids = new Utentes();
+
+            covids.AddUTente(a1);
+
+            Estado a11 = new Estado(DateTime.Today, Situacao.INTERNADO);
+
+            a1.ConsultaEstado(a1, covids);
+
+
+
+
+
+
+
+            Console.WriteLine(a1.DistritoU);
             Console.WriteLine(a1.GeneroU);
             Console.WriteLine(a1.DataNascimento.ToString());
             
