@@ -20,23 +20,6 @@ namespace TrabalhoFinal
 
         {
             
-           
-            //Utente a2 = new Utente("119234562", "Sérgio Martins", "07-12-81", Genero.MASCULINO, Distrito.Porto, Situacao.LIGEIRO);
-
-            //a1.AddEstado(Situacao.LIGEIRO, DateTime.Today );
-            Utentes hospital = new Utentes();
-
-            //hospital.AddUTente(a1);
-
-
-
-
-
-            //Console.WriteLine(a1.Nome);
-            //Console.WriteLine(a1.GeneroU);
-            //Console.WriteLine(a1.DataNascimento.ToString());
-
-            //Console.WriteLine(b.ContaDias(123456789));
 
             //Console.WriteLine(a1.CalculaIdade().ToString());
             DateTime date = Convert.ToDateTime("02/09/20");
