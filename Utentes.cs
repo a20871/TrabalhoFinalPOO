@@ -86,15 +86,85 @@ namespace TrabalhoFinal
         /// <returns> nome do utente</returns>
         public string MostraNomeUtente(string num)
         {
-            string s= "";
+            string s = "";
             foreach (Utente u in doentes)
             {
                 if (u.NumUtente == num)
                     return u.Nome;
             }
-                return s;
+            return s;
         }
-           
+
+
+
+        /// <summary>
+        /// Cria uma lista com os utentes que tiveram um determinado novo estado
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="e"></param>       
+        public List<Utente> FiltraEstado(Estado e)
+        {
+            List<Utente> alta = new List<Utente>();
+            foreach (Utente u in doentes)
+            {
+                if (u.FiltraUtentePorEstado(e) == true)
+                    alta.Add(u);
+            }
+            return alta;
+        }
+
+        /// <summary>
+        /// Conta o numero de utentes a que lhe foi atribuido um determinado novo estado
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public int ContaUtentePorEstado(Estado e)
+        {
+            List<Utente> a = FiltraEstado(e);
+            return a.Count();
+        }
+
+        /// <summary>
+        /// Cria uma lista com os utentes que estiveram internados
+        /// </summary>
+        /// <returns></returns>
+
+        public List<Utente> CriaListaTempoInternamento()
+        {
+            List<Utente> internado = new List<Utente>();
+            foreach (Utente u in doentes)
+            {
+                if (u.TempoInternamento() > 0)
+                    internado.Add(u);
+
+            }
+            return internado;
+        }
+
+
+
+       /* public string UtenteMaisTempoInternado()
+        {
+            List<Utente> internado = CriaListaTempoInternamento();
+            int i = 0;
+            int j = 0;
+            foreach (Utente u in internado)
+            {
+                i = u.TempoInternamento();
+                if (i > j)
+                {
+                    int aux = j;
+                    j = i;
+                    i = aux;
+                }
+            }*/
+       //continuar amanha
+
+
+
+
+        }
+
 
 
 

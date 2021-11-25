@@ -31,9 +31,9 @@ namespace TrabalhoFinal
     /// <p>a20871@alunos.ipca.pt</p>a20872@alunos.ipca.pt
     /// @date 11/16/2021 4:50:51 PM
     /// </summary>
-    public class Utente 
+    public class Utente
     {
-       
+
         #region Attributes
 
         protected string numeroUtente;
@@ -41,9 +41,9 @@ namespace TrabalhoFinal
         DateTime dataNascimento;
         Genero generoU;
         Distrito distritoU;
-        List <Estado> n ;
-        Estado s; //estado inicial
-        //Estados estados;
+        public List<Estado> n;
+        public static int totUtententes = 0;
+
 
 
         #endregion
@@ -66,7 +66,9 @@ namespace TrabalhoFinal
             this.GeneroU = generoU;
             this.DistritoU = distritoU;
             this.AddEstado(s);//adiciona um estado inicial
-            
+            //this.n = n;
+            totUtententes++;
+
         }
 
         #region Properties
@@ -137,13 +139,13 @@ namespace TrabalhoFinal
             {
                 if ((value == Distrito.Aveiro) || (value == Distrito.Beja) || (value == Distrito.Braga) || (value == Distrito.Braganca) || (value == Distrito.CasteloBranco) || (value == Distrito.Coimbra) || (value == Distrito.Evora) || (value == Distrito.Faro) || (value == Distrito.Guarda) || (value == Distrito.Leiria) || (value == Distrito.Lisboa) || (value == Distrito.Portalegre) || (value == Distrito.Porto) || (value == Distrito.Santarem) || (value == Distrito.Setubal) || (value == Distrito.VianaCastelo) || (value == Distrito.VilaReal) || (value == Distrito.Viseu))
                     distritoU = value;
-               
+
             }
         }
 
-       
 
-       
+
+
 
         #endregion
 
@@ -160,7 +162,7 @@ namespace TrabalhoFinal
             n.Add(e);
             //return true;
         }
-        
+
         /// <summary>
         /// Mostra o historico de estados de um doente
         /// </summary>
@@ -169,7 +171,46 @@ namespace TrabalhoFinal
             foreach (Estado e in n)
                 Console.WriteLine($"{e.DataNovoEstado}\t{e.Sit}");
         }
-  
+
+
+        /// <summary>
+        /// Mostra se um utente esteve ou nao num determinado estado numa determinada data
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public bool FiltraUtentePorEstado(Estado e)
+        {
+
+            foreach (Estado a in n)
+            {
+                if (this.n.Contains(e))
+                    return true;
+            }
+            return false;
+        }
+
+        public int TempoInternamento()
+        {
+            DateTime d1 = Convert.ToDateTime("01-01-20").Date;
+            DateTime d2 = Convert.ToDateTime("02-10-30").Date;
+            foreach (Estado e in n)
+            {
+                if (e.Sit == Situacao.INTERNADO)
+                    d1 = e.DataNovoEstado;
+                if (e.Sit == Situacao.ALTA)
+                    d2 = e.DataNovoEstado;
+            }
+            if (DateTime.Compare(d1, d2) < 0)
+                return (d2 - d1).Days;
+            else 
+                return 0;
+
+        }
+
+
+
+
 
         #endregion
 
@@ -179,7 +220,7 @@ namespace TrabalhoFinal
 
 
         #region Others
-       
+
         /// <summary>
         /// Calcula idade
         /// </summary>
@@ -195,7 +236,7 @@ namespace TrabalhoFinal
 
 
 
-     }
+    }
 
     #endregion
 
