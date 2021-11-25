@@ -35,16 +35,6 @@ namespace TrabalhoFinal
 
         #region Constructors
 
-        public Estado()
-        {
-
-        }
-
-        /// <summary>
-        /// Novo Estado
-        /// </summary>
-        /// <param name="d"> Data</param>
-        /// <param name="m"> Situação Enum Situacao</param>
         public Estado(DateTime d, Situacao m)
         {
             this.DataNovoEstado = Convert.ToDateTime(d);
@@ -55,12 +45,18 @@ namespace TrabalhoFinal
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Propriedade em que se define a data da alteracao do estado
+        /// </summary>
         public DateTime DataNovoEstado
         {
             get { return dataNovoEstado; }
             set { dataNovoEstado = value.Date; }
         }
 
+        /// <summary>
+        /// Propriedade que define a nova situacao em que se encontra o utente
+        /// </summary>
         public Situacao Sit{
             get { return sit; }
             set { sit = value; }
@@ -82,8 +78,6 @@ namespace TrabalhoFinal
 
     }
 
-    public class Estados
-    {
-        List<Estado> e;
-    }
+  
+   
 }
