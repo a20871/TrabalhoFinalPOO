@@ -44,14 +44,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Estado.cs" />
+    <Compile Include="Exception.cs" />
+    <Compile Include="MetodosRascunho.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utente.cs" />
+    <Compile Include="Utentes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClassDiagram2.png" />
+    <Content Include="DiagramInicial.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
