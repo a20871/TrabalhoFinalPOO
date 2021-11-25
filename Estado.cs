@@ -35,7 +35,7 @@ namespace TrabalhoFinal
 
         #region Constructors
 
-        public Estado(DateTime d, Situacao m)
+        public Estado(string d, Situacao m)
         {
             this.DataNovoEstado = Convert.ToDateTime(d);
             this.Sit = m;
@@ -65,11 +65,20 @@ namespace TrabalhoFinal
         }
 
 
+
+        
+
+
         #endregion
 
         #region Others
+        /*public override bool Equals(object obj)
+        {
+            if(this.Sit==obj)
+            return base.Equals(obj);
+        }*/
 
-
+      
 
         #endregion
 
