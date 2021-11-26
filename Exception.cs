@@ -1,50 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+ * @Brief Classe de Exceptions personalizadas
+ * 
+ * 
+ * @autor: Jéssica Costa & Sérgio Martins
+ * @email: a20871@alunos.ipca.pt; a20872@alunos.ipca.pt
+ * @data: $time$
+ */
+using System;
+
 
 namespace TrabalhoFinal
 {
     /// <summary>
-    /// @brief 
+    /// @brief Exceptions para inserção incorreta de datas.
     /// @author Sérgio Martins
     /// <p>a20871@alunos.ipca.pt</p>
     /// @date 11/25/2021 10:12:57 AM
     /// </summary>
-    public class Exception
+    public class DataExcepcoes: ApplicationException 
     {
-        #region Attributes
-
-
-
-        #endregion
-
-        #region Constructors
-
-        public Exception()
+        public DataExcepcoes() : base("Erro de data")
         {
 
         }
 
-        #endregion
+        public DataExcepcoes(string s) : base("Data com formato incorreto. Insira dd-mm-aaa.")
+        {
+            
+        }
 
-        #region Properties
+        public DataExcepcoes(string s, Exception e) : base("Formato de data inválido")
+        {
+            throw new DataExcepcoes(e.Message + " - " + s);
+        }
 
-
-
-        #endregion
-
-        #region Others
-
-
-
-        #endregion
-
-        #region Destructors
-
-
-        #endregion
+     
 
     }
 }

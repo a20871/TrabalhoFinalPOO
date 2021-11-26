@@ -34,10 +34,27 @@ namespace TrabalhoFinal
         #endregion
 
         #region Constructors
-
+        /// <summary>
+        /// Cosntrutor para Estado do doente
+        /// </summary>
+        /// <param name="d">Data do novo estado. Utiliza Exception se data inserida erradamente.</param>
+        /// <param name="m">Situação do doente</param>
         public Estado(string d, Situacao m)
         {
+            try
+            {
             this.DataNovoEstado = Convert.ToDateTime(d);
+            }
+            
+            catch(FormatException e)
+            {
+                throw new DataExcepcoes(e.Message);
+            }
+            catch(Exception)
+            {
+                throw new Exception("Erro ao inserir data");
+            }
+           
             this.Sit = m;
         }
 

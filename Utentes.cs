@@ -143,32 +143,32 @@ namespace TrabalhoFinal
 
 
 
-       /* public string UtenteMaisTempoInternado()
-        {
-            List<Utente> internado = CriaListaTempoInternamento();
-            int i = 0;
-            int j = 0;
-            foreach (Utente u in internado)
-            {
-                i = u.TempoInternamento();
-                if (i > j)
-                {
-                    int aux = j;
-                    j = i;
-                    i = aux;
-                }
-            }*/
-       //continuar amanha
+        /* public string UtenteMaisTempoInternado()
+         {
+             List<Utente> internado = CriaListaTempoInternamento();
+             int i = 0;
+             int j = 0;
+             foreach (Utente u in internado)
+             {
+                 i = u.TempoInternamento();
+                 if (i > j)
+                 {
+                     int aux = j;
+                     j = i;
+                     i = aux;
+                 }
+             }*/
+        //continuar amanha
 
 
 
 
-        }
+    }
 
 
 
 
-        #endregion
+    #endregion
 
 
 
@@ -176,4 +176,4 @@ namespace TrabalhoFinal
     }
 
 
-}
+

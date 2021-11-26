@@ -23,7 +23,18 @@ namespace TrabalhoFinal
 
             //Console.WriteLine(a1.CalculaIdade().ToString());
             DateTime date = Convert.ToDateTime("02/09/20");
-            Estado e1 = new Estado("10-11-2021", Situacao.LIGEIRO);
+            try
+            {
+                Estado e1 = new Estado("g", Situacao.LIGEIRO);
+            }
+            catch(DataExcepcoes e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
             Estado e2 = new Estado("17-11-2021", Situacao.INTERNADO);
             Estado e3 = new Estado("26-11-2021", Situacao.ALTA);
             Estado e4 = new Estado("28-11-2021", Situacao.ALTA);
@@ -32,7 +43,7 @@ namespace TrabalhoFinal
             Utente a1 = new Utente("123456789", "Ana", "09-12-1975", Genero.FEMININO, Distrito.Braga, e2);
             Utente a2 = new Utente("123156789", "Pedro", "09-12-1975", Genero.MASCULINO, Distrito.Braga, e5);
             a1.AddEstado(e3);//adiciona um estado a lista de um utente
-            a2.AddEstado(e1);
+            //a2.AddEstado(e1);
             
             Utentes u = new Utentes();
             
