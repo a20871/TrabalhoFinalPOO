@@ -62,6 +62,8 @@ namespace TrabalhoFinal
 
         }
 
+ 
+
         #region Properties
         /// <summary>
         /// Propriedade para número de Utente, verifica se tem 9 dígitos
@@ -81,6 +83,8 @@ namespace TrabalhoFinal
                 }
             }
         }
+
+       
 
 
 
@@ -156,10 +160,18 @@ namespace TrabalhoFinal
 
         #endregion
 
+        #region Override
+
+       
+
+
+
+
+        #endregion
 
         #region Others
 
-      
+
 
 
 
