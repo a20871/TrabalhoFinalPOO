@@ -46,6 +46,7 @@
     <Compile Include="Estado.cs" />
     <Compile Include="Exception.cs" />
     <Compile Include="MetodosRascunho.cs" />
+    <Compile Include="Pessoa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utente.cs" />
