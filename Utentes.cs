@@ -118,18 +118,19 @@ namespace TrabalhoFinal
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        public int ContaUtentePorEstado(Estado e)
+        public int ContaUtentePorEstado(Situacao s, string data)
         {
+            Estado e = new Estado(data, s);
             List<Utente> a = FiltraEstado(e);
             return a.Count();
         }
 
         /// <summary>
-        /// Cria uma lista com os utentes que estiveram internados
+        /// Cria uma lista com todos os utentes que estiveram internados desde o inicio da pandemia
         /// </summary>
         /// <returns></returns>
 
-        public List<Utente> CriaListaUtentesInternados(Situacao s)
+        public List<Utente> CriaListaTodosUtentesInternados(Situacao s)
         {
             List<Utente> internado = new List<Utente>();
             foreach (Utente u in doentes)
@@ -142,6 +143,7 @@ namespace TrabalhoFinal
         }
 
 
+
         /// <summary>
         /// Ordena os utentes internados pelo tempo de internamento por ordem crescente
         /// </summary>
@@ -149,7 +151,7 @@ namespace TrabalhoFinal
 
         public List<Utente> OrdenaTempoInternamOrdemCrescente(Situacao s)
         {
-            List<Utente> internado = CriaListaUtentesInternados(s); 
+            List<Utente> internado = CriaListaTodosUtentesInternados(s); 
              internado.OrderBy(u => u.TempoInternamento(s));
             return internado;
         }
@@ -186,7 +188,7 @@ namespace TrabalhoFinal
         /// <returns></returns>
         public List<Utente> OrdenaTempoInternamentoDecrescente(Situacao s)
         {
-            List<Utente> internado = CriaListaUtentesInternados(s);
+            List<Utente> internado = CriaListaTodosUtentesInternados(s);
             internado.OrderByDescending(u => u.TempoInternamento(s));
             return internado;
         }
@@ -211,7 +213,7 @@ namespace TrabalhoFinal
         public List<Utente> UtenteMaisTempoInternado(Situacao s)
         {
             List<Utente> internadoMaisTempo = new List<Utente>();
-            List<Utente> internado = CriaListaUtentesInternados(s);
+            List<Utente> internado = CriaListaTodosUtentesInternados(s);
             foreach (Utente u in internado)
             {
                 if (MaiorTempoInternado(s) == u.TempoInternamento(s))
@@ -226,7 +228,7 @@ namespace TrabalhoFinal
         public List<Utente> UtenteMenosTempoInternado(Situacao s)
         {
             List<Utente> internadoMenosTempo = new List<Utente>();
-            List<Utente> internado = CriaListaUtentesInternados(s);
+            List<Utente> internado = CriaListaTodosUtentesInternados(s);
             foreach (Utente u in internado)
             {
                 if (MenorTempoInternado(s) == u.TempoInternamento(s))
@@ -243,7 +245,7 @@ namespace TrabalhoFinal
         /// <returns></returns>
         public double MediaTempoInternamento(Situacao s)
         {
-            List<Utente> internado = CriaListaUtentesInternados(s);
+            List<Utente> internado = CriaListaTodosUtentesInternados(s);
             double soma = 0.0;
             foreach (Utente u in doentes)
             {
@@ -252,9 +254,46 @@ namespace TrabalhoFinal
               return soma / internado.Count();         
         }
 
+        /// <summary>
+        /// Cria uma lista de utentes que estao em internamento ou UCI numa determinada data
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+     public List<Utente> CriaListaUtentesInternadosNumaData(string d, Situacao s)
+        {
+            List<Utente> a = new List<Utente>();
+            foreach (Utente u in doentes)
+            {
+                if (u.VerificaSeUtenteEstaInternado(d,s)==true)
+                    a.Add(u);
+            }
+            return a;
+        }
 
+        /// <summary>
+        /// Conta o numero de utentes que estao em internamento numa determinada data
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public int ContaUtentesInternadosNumaData(string d, Situacao s)
+        {
+            List<Utente> a = CriaListaUtentesInternadosNumaData(d,s);
+            return a.Count();
+        }
 
-
+        /// <summary>
+        /// Mosta o numero e respetivo nome dos utentes que estao internados ou em UCI numa dada data
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="s"></param>
+        public void MostraUtenteInternado(string d, Situacao s)
+        {
+            List<Utente> a = CriaListaUtentesInternadosNumaData(d, s);
+            foreach (Utente u in a)
+                Console.WriteLine($"{u.NumUtente}\t{u.Nome}");
+        }
     }
 
 

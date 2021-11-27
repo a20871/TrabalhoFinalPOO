@@ -123,6 +123,25 @@ namespace TrabalhoFinal
            
         }
 
+        /// <summary>
+        /// Verifica se um determinado doente esta internado ou em uci numa determinada data
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public bool VerificaSeUtenteEstaInternado(string d, Situacao s)
+        {
+            DateTime data = Convert.ToDateTime(d).Date;
+            foreach (Estado e in n)
+            {
+                if ((e.Sit == s) && (e.DataNovoEstado >= data))
+                    continue;
+                if ((e.Sit == Situacao.ALTA) && (e.DataNovoEstado >= data))
+                    return true;
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// Mostra se um utente esteve ou nao num determinado estado numa determinada data
