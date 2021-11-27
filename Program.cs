@@ -58,7 +58,7 @@ namespace TrabalhoFinal
             a1.MostraEstadoUtente();
             a2.MostraEstadoUtente();
             Console.WriteLine(u.MostraNomeUtente("123456789"));
-            Console.WriteLine(u.ContaUtentePorEstado(e5));
+            Console.WriteLine(u.ContaUtentePorEstado(Situacao.LIGEIRO, "09-11-2021"));
             Console.WriteLine(a1.TempoInternamento(Situacao.INTERNADO));
             Console.WriteLine(a1.ToString());
             u.MostraListaOrdenadaTempoInternamento(Situacao.INTERNADO);
