@@ -90,14 +90,14 @@ namespace TrabalhoFinal
             Console.WriteLine("\nNome do utente 123456789:\n"+ u.MostraNomeUtente("123456789"));
             
 
-            Console.WriteLine("\nNúmero de óbitos:"+u.ContaUtentePorEstado(e7).ToString());
+            Console.WriteLine("\nNúmero de óbitos:"+u.ContaUtententeNumaSituacao(Situacao.OBITO).ToString());
 
 
-            Console.WriteLine($"\nTempo de internamento de {a1.Nome}: "+a1.TempoInternamento()+" dias.");
+            Console.WriteLine($"\nTempo de internamento de {a1.Nome}: {a1.TempoInternamento(Situacao.INTERNADO)} dias.");
 
             //Mostra idade de um determinado utente (Override ToString()).
             Console.WriteLine(a1.ToString());
-            u.MostraListaOrdenadaTempoInternamento();
+            u.MostraListaOrdenadaTempoInternamento(Situacao.INTERNADO);
             //u.RegistaEstadoUtente(estado1, "123456789");
 
             //Verifica se 2 utentes são o mesmo utente (mesmo nº de utente)
