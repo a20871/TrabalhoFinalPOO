@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TrabalhoFinal.Estado">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Estado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrabalhoFinal.DataExcepcoes">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exception.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrabalhoFinal.Pessoa">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAAAAAAAAAAEAAAAAgIAAAICAAAAAAACAAEAAgA=</HashCode>
+      <FileName>Pessoa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrabalhoFinal.Program">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrabalhoFinal.Utente">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAIAAIAAAAAAAAAAAAAAAAAAAEwQAAAAAAAA=</HashCode>
+      <FileName>Utente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrabalhoFinal.Utentes">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgABgAAAZAAAAJEAABAAAAABAAAAAAAAAgQAQAEA=</HashCode>
+      <FileName>Utentes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="TrabalhoFinal.Situacao">
+    <Position X="9" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAQCAAAAAAAAAAAAAAAAAAAAABBAAAA=</HashCode>
+      <FileName>Estado.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TrabalhoFinal.Genero">
+    <Position X="9" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Utente.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TrabalhoFinal.Distrito" Collapsed="true">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAQAJAYBAAAAAIAAEAAAQIwBAAQAAAAQAQAAA=</HashCode>
+      <FileName>Utente.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

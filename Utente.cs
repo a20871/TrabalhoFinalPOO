@@ -37,8 +37,8 @@ namespace TrabalhoFinal
         #region Attributes
 
         protected string numeroUtente;
-        public List<Estado> n;
-        public static int totUtententes = 0;
+        List<Estado> n;
+        static int totUtententes = 0;
 
 
 
