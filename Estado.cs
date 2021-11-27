@@ -53,6 +53,14 @@ namespace TrabalhoFinal
             this.Sit = m;
         }
 
+        public Estado(Situacao m)
+        {
+            
+        this.DataNovoEstado = DateTime.Today;
+            
+        this.Sit = m;
+        }
+
 
         #endregion
 
