@@ -64,7 +64,7 @@ namespace TrabalhoFinal
             this.NumUtente = numero;
             Estado e = new Estado(s);//Adiciona Estado com a data do dia
             this.AddEstado(e);
-                       
+
             totUtententes++;
 
         }
@@ -75,22 +75,16 @@ namespace TrabalhoFinal
         public string NumUtente
         {
             get { return numeroUtente; }
-
-
             set
             {
 
                 //Verifica se tem 9 caracteres e todos são algarismos
-                
+                {
                     if (value.Length == 9 || numeroUtente.All(char.IsDigit))
                     {
                         numeroUtente = value;
                     }
-                else
-                {
-                    numeroUtente = "000000000"; //set para utente não identificado
                 }
-                
             }
         }
 
@@ -113,8 +107,6 @@ namespace TrabalhoFinal
             //return true;
         }
 
-     
-
         /// <summary>
         /// Mostra o historico de estados de um doente
         /// </summary>
@@ -122,6 +114,41 @@ namespace TrabalhoFinal
         {
             foreach (Estado e in n)
                 Console.WriteLine($"{e.DataNovoEstado}\t{e.Sit}");
+        }
+
+        /// <summary>
+        /// Devolve true se um utente tiver estado numa determinada situacao passada por parametro
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public bool EsteveNumaSituacao(Situacao s)
+        {
+            foreach (Estado a in n)
+            {
+                if (a.Sit == s)
+                    return true;
+            }
+            return false;
+
+        }
+
+        /// <summary>
+        /// Verifica se um determinado doente esta internado ou em uci numa determinada data
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public bool VerificaSeUtenteEstaInternado(string d, Situacao s)
+        {
+            DateTime data = Convert.ToDateTime(d).Date;
+            foreach (Estado e in n)
+            {
+                if ((e.Sit == s) && (e.DataNovoEstado >= data))
+                    continue;
+                if ((e.Sit == Situacao.ALTA) && (e.DataNovoEstado >= data))
+                    return true;
+            }
+            return false;
         }
 
 
@@ -142,13 +169,13 @@ namespace TrabalhoFinal
             return false;
         }
 
-        public int TempoInternamento()
+        public int TempoInternamento(Situacao s)
         {
             DateTime d1 = Convert.ToDateTime("01-01-20").Date;
             DateTime d2 = Convert.ToDateTime("02-10-30").Date;
             foreach (Estado e in n)
             {
-                if (e.Sit == Situacao.INTERNADO)
+                if (e.Sit == s)
                     d1 = e.DataNovoEstado;
                 if (e.Sit == Situacao.ALTA)
                     d2 = e.DataNovoEstado;
@@ -157,12 +184,7 @@ namespace TrabalhoFinal
                 return (d2 - d1).Days;
             else
                 return 0;
-
         }
-
-
-
-
 
         #endregion
 
@@ -197,4 +219,3 @@ namespace TrabalhoFinal
         #endregion
     }
 }
-
