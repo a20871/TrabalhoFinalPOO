@@ -59,9 +59,9 @@ namespace TrabalhoFinal
             a2.MostraEstadoUtente();
             Console.WriteLine(u.MostraNomeUtente("123456789"));
             Console.WriteLine(u.ContaUtentePorEstado(e5));
-            Console.WriteLine(a1.TempoInternamento());
+            Console.WriteLine(a1.TempoInternamento(Situacao.INTERNADO));
             Console.WriteLine(a1.ToString());
-            u.MostraListaOrdenadaTempoInternamento();
+            u.MostraListaOrdenadaTempoInternamento(Situacao.INTERNADO);
             //u.RegistaEstadoUtente(estado1, "123456789");
 
             //Verifica se 2 utentes são o mesmo utente (mesmo nº de utente)
