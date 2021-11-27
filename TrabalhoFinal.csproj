@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Estado.cs" />
     <Compile Include="Exception.cs" />
-    <Compile Include="IGereListas.cs" />
     <Compile Include="MetodosRascunho.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Program.cs" />
