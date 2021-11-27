@@ -28,11 +28,12 @@ namespace TrabalhoFinal
             Estado e3 = new Estado("26-11-2021", Situacao.ALTA);
             Estado e4 = new Estado("28-11-2021", Situacao.ALTA);
             Estado e5 = new Estado("09-11-2021", Situacao.LIGEIRO);
-            //List<Estado> n = new List<Estado>();
-            Utente a1 = new Utente("123456789", "Ana", "09-12-1975", Genero.FEMININO, Distrito.Braga, e2);
-            Utente a2 = new Utente("123156789", "Pedro", "09-12-1975", Genero.MASCULINO, Distrito.Braga, e5);
+            Pessoa p1 = new Pessoa("Ana", "09-12-1975", Genero.FEMININO, Distrito.Braga);
+            Utente a1 = new Utente("123456789", e2, "Ana", "09-12-1975", Genero.FEMININO, Distrito.Braga);
+            Pessoa p2 = new Pessoa("Pedro", "09-12-1975", Genero.MASCULINO, Distrito.Braga);
+            Utente a2 = new Utente("123156789", e2, "Pedro", "09-12-1975", Genero.MASCULINO, Distrito.Braga);
             a1.AddEstado(e3);//adiciona um estado a lista de um utente
-            a2.AddEstado(e1);
+            a2.AddEstado(e4);
             
             Utentes u = new Utentes();
             
@@ -44,7 +45,8 @@ namespace TrabalhoFinal
             Console.WriteLine(u.MostraNomeUtente("123456789"));
             Console.WriteLine(u.ContaUtentePorEstado(e5));
             Console.WriteLine(a1.TempoInternamento());
-            
+            Console.WriteLine(a1.ToString());
+            u.MostraListaOrdenadaTempoInternamento();
             //u.RegistaEstadoUtente(estado1, "123456789");
 
             Console.ReadKey();
