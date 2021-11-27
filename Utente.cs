@@ -71,6 +71,8 @@ namespace TrabalhoFinal
 
         }
 
+ 
+
         #region Properties
         /// <summary>
         /// Propriedade para número de Utente, verifica se tem 9 dígitos
@@ -103,8 +105,7 @@ namespace TrabalhoFinal
                     nome = value;
             }
 
-        }
-
+       
         /// <summary>
         /// Data de Nascimento
         /// </summary>
@@ -113,36 +114,6 @@ namespace TrabalhoFinal
             get { return dataNascimento; }
             set { dataNascimento = value.Date; }
         }
-
-
-        /// <summary>
-        /// Género - escolha opção
-        /// </summary>
-        public Genero GeneroU
-        {
-            get { return generoU; }
-            set
-            {
-                if ((value == Genero.MASCULINO) || (value == Genero.FEMININO))
-                    generoU = value;
-
-            }
-        }
-
-        /// <summary>
-        /// Distrito de morada - escolha opção
-        /// </summary>
-        public Distrito DistritoU
-        {
-            get { return distritoU; }
-            set
-            {
-                if ((value == Distrito.Aveiro) || (value == Distrito.Beja) || (value == Distrito.Braga) || (value == Distrito.Braganca) || (value == Distrito.CasteloBranco) || (value == Distrito.Coimbra) || (value == Distrito.Evora) || (value == Distrito.Faro) || (value == Distrito.Guarda) || (value == Distrito.Leiria) || (value == Distrito.Lisboa) || (value == Distrito.Portalegre) || (value == Distrito.Porto) || (value == Distrito.Santarem) || (value == Distrito.Setubal) || (value == Distrito.VianaCastelo) || (value == Distrito.VilaReal) || (value == Distrito.Viseu))
-                    distritoU = value;
-
-            }
-        }
-
 
 
 
@@ -218,21 +189,18 @@ namespace TrabalhoFinal
 
         #endregion
 
+        #region Override
+
+       
+
+
+
+
+        #endregion
 
         #region Others
 
-        /// <summary>
-        /// Calcula idade
-        /// </summary>
-        /// <returns>Idade em Anos</returns>
-        public int CalculaIdade()
-        {
-            int idade = 0;
-            idade = DateTime.Today.Year - dataNascimento.Year;
-            if (DateTime.Today.DayOfYear < dataNascimento.DayOfYear)
-                idade = idade - 1;
-            return idade;
-        }
+
 
 
 

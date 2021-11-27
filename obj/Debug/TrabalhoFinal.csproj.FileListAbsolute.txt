@@ -5,3 +5,10 @@ C:\Users\marti\OneDrive - Instituto Politécnico do Cávado e do Ave\2ano_1semes
 C:\Users\marti\OneDrive - Instituto Politécnico do Cávado e do Ave\2ano_1semestre\POOTrabalho\TrabalhoFinal\bin\Debug\TrabalhoFinal.pdb
 C:\Users\marti\OneDrive - Instituto Politécnico do Cávado e do Ave\2ano_1semestre\POOTrabalho\TrabalhoFinal\obj\Debug\TrabalhoFinal.exe
 C:\Users\marti\OneDrive - Instituto Politécnico do Cávado e do Ave\2ano_1semestre\POOTrabalho\TrabalhoFinal\obj\Debug\TrabalhoFinal.pdb
+D:\POOFINAL\obj\Debug\TrabalhoFinal.csproj.AssemblyReference.cache
+D:\POOFINAL\obj\Debug\TrabalhoFinal.csproj.CoreCompileInputs.cache
+D:\POOFINAL\obj\Debug\TrabalhoFinal.exe
+D:\POOFINAL\obj\Debug\TrabalhoFinal.pdb
+D:\POOFINAL\bin\Debug\TrabalhoFinal.exe.config
+D:\POOFINAL\bin\Debug\TrabalhoFinal.exe
+D:\POOFINAL\bin\Debug\TrabalhoFinal.pdb
