@@ -59,6 +59,15 @@ namespace TrabalhoFinal
 
         }
 
+        public Utente(string numero, Situacao s, string nome, string dataNascimento, Genero genero, Distrito morada) : base(nome, dataNascimento, genero, morada)
+        {
+            this.NumUtente = numero;
+            Estado e = new Estado(s);//Adiciona Estado com a data do dia
+            this.AddEstado(e);
+                       
+            totUtententes++;
+
+        }
         #region Properties
         /// <summary>
         /// Propriedade para número de Utente, verifica se tem 9 dígitos
@@ -66,16 +75,22 @@ namespace TrabalhoFinal
         public string NumUtente
         {
             get { return numeroUtente; }
+
+
             set
             {
 
                 //Verifica se tem 9 caracteres e todos são algarismos
-                {
+                
                     if (value.Length == 9 || numeroUtente.All(char.IsDigit))
                     {
                         numeroUtente = value;
                     }
+                else
+                {
+                    numeroUtente = "000000000"; //set para utente não identificado
                 }
+                
             }
         }
 
@@ -97,6 +112,8 @@ namespace TrabalhoFinal
             n.Add(e);
             //return true;
         }
+
+     
 
         /// <summary>
         /// Mostra o historico de estados de um doente
@@ -148,8 +165,6 @@ namespace TrabalhoFinal
 
 
         #endregion
-
-
 
         #endregion
 
