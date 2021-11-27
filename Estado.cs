@@ -73,22 +73,11 @@ namespace TrabalhoFinal
             get { return sit; }
             set { sit = value; }
         }
-
-
-
         
-
-
         #endregion
 
         #region Others
-        /*public override bool Equals(object obj)
-        {
-            if(this.Sit==obj)
-            return base.Equals(obj);
-        }*/
-
-      
+            
 
         #endregion
 

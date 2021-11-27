@@ -26,21 +26,18 @@ namespace TrabalhoFinal
     public enum Distrito { Aveiro, Beja, Braga, Braganca, CasteloBranco, Coimbra, Evora, Faro, Guarda, Leiria, Lisboa, Portalegre, Porto, Santarem, Setubal, VianaCastelo, VilaReal, Viseu };
     #endregion
     /// <summary>
-    /// @brief 
+    /// @brief Classe Utente que congrega as funcionalidades para Utentes que são diagnosticados com COVID, herda de Pessoa
     /// @author Sérgio Martins, Jéssica Costa
-    /// <p>a20871@alunos.ipca.pt</p>a20872@alunos.ipca.pt
+    /// <p>a20871@alunos.ipca.pt</p><p>a20872@alunos.ipca.pt</p>
     /// @date 11/16/2021 4:50:51 PM
     /// </summary>
     public class Utente : Pessoa
     {
-
         #region Attributes
 
         protected string numeroUtente;
         List<Estado> n;
         static int totUtententes = 0;
-
-
 
         #endregion
 
@@ -156,22 +153,33 @@ namespace TrabalhoFinal
 
         #endregion
 
-
         #region Others
+        #region OPERATORS
+
+        /// <summary>
+        /// Compara 2 Utentes pelo seu número de Utente
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            Utente aux = (Utente)obj;
+            if (aux.NumUtente == this.NumUtente)
+
+                return true;
+            else return false;
+        }
+
+        #endregion
 
 
 
+        #endregion
+
+        #region Destructors
 
 
+        #endregion
     }
-
-    #endregion
-
-    #region Destructors
-
-
-    #endregion
-
-
 }
 

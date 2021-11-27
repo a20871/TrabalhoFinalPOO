@@ -43,6 +43,7 @@ namespace TrabalhoFinal
             Utente a1 = new Utente("123456789", e2, "Ana", "09-12-1975", Genero.FEMININO, Distrito.Braga);
             Pessoa p2 = new Pessoa("Pedro", "09-12-1975", Genero.MASCULINO, Distrito.Braga);
             Utente a2 = new Utente("123156789", e2, "Pedro", "09-12-1975", Genero.MASCULINO, Distrito.Braga);
+            Utente a3 = new Utente("123156789", e2, "Quim", "02-12-1975", Genero.MASCULINO, Distrito.Braga);
             a1.AddEstado(e3);//adiciona um estado a lista de um utente
             a2.AddEstado(e4);
             
@@ -59,6 +60,9 @@ namespace TrabalhoFinal
             Console.WriteLine(a1.ToString());
             u.MostraListaOrdenadaTempoInternamento();
             //u.RegistaEstadoUtente(estado1, "123456789");
+
+            //Verifica se 2 utentes são o mesmo utente (mesmo nº de utente)
+            Console.WriteLine(a2.Equals(a3));
 
             Console.ReadKey();
 
