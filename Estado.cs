@@ -37,7 +37,19 @@ namespace TrabalhoFinal
 
         public Estado(string d, Situacao m)
         {
-            this.DataNovoEstado = Convert.ToDateTime(d);
+            try
+            {
+                this.DataNovoEstado = Convert.ToDateTime(d);
+            }
+
+            catch (FormatException e)
+            {
+                throw new DataExcepcoes(e.Message);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao inserir data");
+            }
             this.Sit = m;
         }
 
