@@ -59,6 +59,15 @@ namespace TrabalhoFinal
 
         }
 
+        public Utente(string numero, Situacao s, string nome, string dataNascimento, Genero genero, Distrito morada) : base(nome, dataNascimento, genero, morada)
+        {
+            this.NumUtente = numero;
+            Estado e = new Estado(s);//Adiciona Estado com a data do dia
+            this.AddEstado(e);
+
+            totUtententes++;
+
+        }
         #region Properties
         /// <summary>
         /// Propriedade para número de Utente, verifica se tem 9 dígitos
