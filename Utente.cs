@@ -59,6 +59,15 @@ namespace TrabalhoFinal
 
         }
 
+        public Utente(string numero, Situacao s, string nome, string dataNascimento, Genero genero, Distrito morada) : base(nome, dataNascimento, genero, morada)
+        {
+            this.NumUtente = numero;
+            Estado e = new Estado(s);//Adiciona Estado com a data do dia
+            this.AddEstado(e);
+                       
+            totUtententes++;
+
+        }
         #region Properties
         /// <summary>
         /// Propriedade para número de Utente, verifica se tem 9 dígitos
@@ -66,16 +75,22 @@ namespace TrabalhoFinal
         public string NumUtente
         {
             get { return numeroUtente; }
+
+
             set
             {
 
                 //Verifica se tem 9 caracteres e todos são algarismos
-                {
+                
                     if (value.Length == 9 || numeroUtente.All(char.IsDigit))
                     {
                         numeroUtente = value;
                     }
+                else
+                {
+                    numeroUtente = "000000000"; //set para utente não identificado
                 }
+                
             }
         }
 
@@ -98,6 +113,8 @@ namespace TrabalhoFinal
             //return true;
         }
 
+     
+
         /// <summary>
         /// Mostra o historico de estados de um doente
         /// </summary>
@@ -105,22 +122,6 @@ namespace TrabalhoFinal
         {
             foreach (Estado e in n)
                 Console.WriteLine($"{e.DataNovoEstado}\t{e.Sit}");
-        }
-
-        /// <summary>
-        /// Devolve true se um utente tiver estado numa determinada situacao passada por parametro
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public bool EsteveNumaSituacao(Situacao s)
-        {
-              foreach (Estado a in n)
-            {
-                if (a.Sit==s)
-                    return true;
-            }
-            return false;
-           
         }
 
 
@@ -141,35 +142,40 @@ namespace TrabalhoFinal
             return false;
         }
 
-        public int TempoInternamento(Situacao s)
+        public int TempoInternamento()
         {
             DateTime d1 = Convert.ToDateTime("01-01-20").Date;
             DateTime d2 = Convert.ToDateTime("02-10-30").Date;
             foreach (Estado e in n)
             {
-                if (e.Sit == s)
+                if (e.Sit == Situacao.INTERNADO)
                     d1 = e.DataNovoEstado;
                 if (e.Sit == Situacao.ALTA)
                     d2 = e.DataNovoEstado;
             }
-                if (DateTime.Compare(d1, d2) < 0)
-                    return (d2 - d1).Days;
-                else
-                    return 0;
+            if (DateTime.Compare(d1, d2) < 0)
+                return (d2 - d1).Days;
+            else
+                return 0;
+
         }
+
+
+
+
 
         #endregion
 
-            #endregion
+        #endregion
 
-            #region Others
-            #region OPERATORS
+        #region Others
+        #region OPERATORS
 
-            /// <summary>
-            /// Compara 2 Utentes pelo seu número de Utente
-            /// </summary>
-            /// <param name="obj"></param>
-            /// <returns></returns>
+        /// <summary>
+        /// Compara 2 Utentes pelo seu número de Utente
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             Utente aux = (Utente)obj;
