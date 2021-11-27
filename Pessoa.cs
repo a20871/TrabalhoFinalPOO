@@ -116,7 +116,7 @@ namespace TrabalhoFinal
         #region Overrides
         public override string ToString()
         {
-            return ($"{Nome}\t{this.CalculaIdade()} anos.");
+            return ($"{Nome}\t{this.CalculaIdade()}");
         }
         #endregion
 
