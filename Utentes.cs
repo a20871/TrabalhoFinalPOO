@@ -2,28 +2,24 @@
 *	<copyright file="TrabalhoFinal" company="IPCA">
 *		Copyright (c) 2021 All Rights Reserved
 *	</copyright>
-* 	<author>Jéssica Costa 20872</author>
-*   <date>11/24/2021 7:28:24 PM</date>
+* 	<author>Jéssica Costa 20872 | Sérgio Martins 20871</author>
+*   <date>11/23/2021 18:31:24 AM</date>
 *	<description> </description>
 **/
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Purpose:
-/// Created by:Jéssica Costa 20872
+/// Created by:Jéssica Costa 20872 | Sérgio Martins 20871
 /// Created on:11/24/2021 7:28:24 PM
 /// </summary>
-/// 
-
 namespace TrabalhoFinal
 {
     /// <summary>
-    /// Purpose:
-    /// Created by: Jéssica Costa 20872
+    /// Purpose: Classe Utentes que contém lista de Utente
+    /// Created by: Jéssica Costa 20872 | Sérgio Martins 20871
     /// Created on: 11/24/2021 7:28:24 PM
     /// </summary>
     /// <remarks></remarks>
@@ -34,16 +30,14 @@ namespace TrabalhoFinal
         List<Utente> doentes;
         #endregion
 
-
         #region Methods
 
         #region Constructors
-
+        /// <summary>
+        /// Construtor da lista Utentes com Utente
+        /// </summary>
         public Utentes()
         { this.doentes = new List<Utente>(); }
-
-
-
         #endregion
 
         #region Properties
@@ -67,8 +61,6 @@ namespace TrabalhoFinal
                 doentes.Add(u);
             return true;
         }
-
-
 
         /// <summary>
         /// Mostra uma lista com o numero e respetivo nome de utente
@@ -94,8 +86,6 @@ namespace TrabalhoFinal
             }
             return s;
         }
-
-
 
         /// <summary>
         /// Cria uma lista com os utentes que tiveram um determinado novo estado
@@ -128,8 +118,7 @@ namespace TrabalhoFinal
         /// <summary>
         /// Cria uma lista com todos os utentes que estiveram internados desde o inicio da pandemia
         /// </summary>
-        /// <returns></returns>
-
+        /// <returns>Lista de Internados</returns>
         public List<Utente> CriaListaTodosUtentesInternados(Situacao s)
         {
             List<Utente> internado = new List<Utente>();
@@ -142,13 +131,10 @@ namespace TrabalhoFinal
             return internado;
         }
 
-
-
         /// <summary>
         /// Ordena os utentes internados pelo tempo de internamento por ordem crescente
         /// </summary>
         /// <returns> listaOrdenadaTempoInternamento</returns>
-
         public List<Utente> OrdenaTempoInternamOrdemCrescente(Situacao s)
         {
             List<Utente> internado = CriaListaTodosUtentesInternados(s);
@@ -166,12 +152,11 @@ namespace TrabalhoFinal
             {
                 Console.WriteLine($"{u.NumUtente}\t{u.Nome}\t{u.TempoInternamento(s)}");
             }
-
         }
 
         /// <summary>
-        /// //Determina qual foi o menor tempo de internamento 
-        /// //Utilizando-se este metodo pode-se descobrir quais os utentes que tiveram o menor tempo de internamento
+        /// Determina qual foi o menor tempo de internamento 
+        /// Utilizando este metodo pode-se descobrir quais os utentes que tiveram o menor tempo de internamento
         /// </summary>
         /// <returns></returns>
         public int MenorTempoInternado(Situacao s)
@@ -193,12 +178,11 @@ namespace TrabalhoFinal
             return internado;
         }
 
-
         /// <summary>
-        /// //Determina qual foi o maior tempo de internamento
-        /// //Utilizando-se este metodo pode-se descobrir quais os utentes que tiveram o maior tempo de internamento
+        /// Determina qual foi o maior tempo de internamento
+        /// Utilizando-se este metodo pode-se descobrir quais os utentes que tiveram o maior tempo de internamento
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Utente com menor tempo de internamento</returns>
         public int MaiorTempoInternado(Situacao s)
         {
             List<Utente> internadoOrdenado = OrdenaTempoInternamentoDecrescente(s);
@@ -224,7 +208,11 @@ namespace TrabalhoFinal
             return internadoMaisTempo;
         }
 
-
+        /// <summary>
+        /// Cria lista com o utente ou utentes menos tempo internados
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public List<Utente> UtenteMenosTempoInternado(Situacao s)
         {
             List<Utente> internadoMenosTempo = new List<Utente>();
@@ -295,7 +283,11 @@ namespace TrabalhoFinal
                 Console.WriteLine($"{u.NumUtente}\t{u.Nome}");
         }
 
-
+        /// <summary>
+        /// Devolve q número de utentes que esteve numa determinada situação
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public int ContaUtententeNumaSituacao(Situacao s)
         {
             List<Utente> a = new List<Utente>();
@@ -313,7 +305,7 @@ namespace TrabalhoFinal
         /// </summary>
         /// <param name="menor"></param>
         /// <param name="maior"></param>
-        /// <returns></returns>
+        /// <returns>Numero de infetados no intervalo de idades especificados</returns>
         public int DivideIdades(int menor, int maior)
         {
             List<Utente> a = new List<Utente>();
@@ -330,6 +322,11 @@ namespace TrabalhoFinal
             return a.Count();
         }
 
+        /// <summary>
+        /// Contabiliza o número de infetados por género especificado
+        /// </summary>
+        /// <param name="g"></param>
+        /// <returns></returns>
         public int ContaGenero(Genero g)
         {
             List<Utente> a = new List<Utente>();

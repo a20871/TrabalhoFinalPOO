@@ -1,16 +1,14 @@
-﻿/**
- * @Brief Class Utente
- * 
- * 
- * @autor: Jéssica Costa & Sérgio Martins
- * @email: a20871@alunos.ipca.pt; a20872@alunos.ipca.pt
- * @data: $time$
- */
+﻿/*
+*	<copyright file="TrabalhoFinal" company="IPCA">
+*		Copyright (c) 2021 All Rights Reserved
+*	</copyright>
+* 	<author>Jéssica Costa 20872 | Sérgio Martins 20871</author>
+*   <date>11/22/2021 14:21:23 AM</date>
+*	<description> </description>
+**/
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TrabalhoFinal
 {
@@ -25,12 +23,13 @@ namespace TrabalhoFinal
     /// </summary>
     public enum Distrito { Aveiro, Beja, Braga, Braganca, CasteloBranco, Coimbra, Evora, Faro, Guarda, Leiria, Lisboa, Portalegre, Porto, Santarem, Setubal, VianaCastelo, VilaReal, Viseu };
     #endregion
-    /// <summary>
-    /// @brief Classe Utente que congrega as funcionalidades para Utentes que são diagnosticados com COVID, herda de Pessoa
-    /// @author Sérgio Martins, Jéssica Costa
-    /// <p>a20871@alunos.ipca.pt</p><p>a20872@alunos.ipca.pt</p>
-    /// @date 11/16/2021 4:50:51 PM
+  
+    /// Purpose: Classe Utente que congrega as funcionalidades para Utentes que são diagnosticados com COVID, herda de Pessoa 
+    /// Created by: Jéssica Costa 20872 | Sérgio Martins 20871
+    /// Created on: 11/26/2021 11:51:01 AM
     /// </summary>
+    /// <remarks></remarks>
+    /// <example></example>
     public class Utente : Pessoa
     {
         #region Attributes
@@ -44,7 +43,7 @@ namespace TrabalhoFinal
         #region Constructors
 
         /// <summary>
-        /// Construtor Utente base
+        /// Construtor Utente com determinado estado (Estado e data) passados manualmente
         /// </summary>
         /// <param name="numero"></param>
         /// <param name="nome"></param>
@@ -59,6 +58,15 @@ namespace TrabalhoFinal
 
         }
 
+        /// <summary>
+        /// Construtor Utente base. Utente diagnosticado com COVID em determinado estado
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <param name="s"></param>
+        /// <param name="nome"></param>
+        /// <param name="dataNascimento"></param>
+        /// <param name="genero"></param>
+        /// <param name="morada"></param>
         public Utente(string numero, Situacao s, string nome, string dataNascimento, Genero genero, Distrito morada) : base(nome, dataNascimento, genero, morada)
         {
             this.NumUtente = numero;
@@ -68,6 +76,8 @@ namespace TrabalhoFinal
             totUtententes++;
 
         }
+        #endregion
+
         #region Properties
         /// <summary>
         /// Propriedade para número de Utente, verifica se tem 9 dígitos
@@ -84,12 +94,10 @@ namespace TrabalhoFinal
                     {
                         numeroUtente = value;
                     }
+                    else numeroUtente= "000000000"; //Utente não identificado
                 }
             }
         }
-
-
-
 
         #endregion
 
@@ -169,6 +177,11 @@ namespace TrabalhoFinal
             return false;
         }
 
+        /// <summary>
+        /// Calcula tempo na situação s
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public int TempoInternamento(Situacao s)
         {
             DateTime d1 = Convert.ToDateTime("01-01-20").Date;
@@ -184,11 +197,7 @@ namespace TrabalhoFinal
                 return (d2 - d1).Days;
             else
                 return 0;
-        }
-
-       
-
-        #endregion
+        }      
 
         #endregion
 
@@ -210,8 +219,6 @@ namespace TrabalhoFinal
         }
 
         #endregion
-
-
 
         #endregion
 

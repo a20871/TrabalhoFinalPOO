@@ -1,22 +1,22 @@
-﻿/**
- * @Brief Classe de Exceptions personalizadas
- * 
- * 
- * @autor: Jéssica Costa & Sérgio Martins
- * @email: a20871@alunos.ipca.pt; a20872@alunos.ipca.pt
- * @data: $time$
- */
+﻿/*
+*	<copyright file="TrabalhoFinal" company="IPCA">
+*		Copyright (c) 2021 All Rights Reserved
+*	</copyright>
+* 	<author>Jéssica Costa 20872 | Sérgio Martins 20871</author>
+*   <date>11/22/2021 14:22:23 AM</date>
+*	<description> </description>
+**/
 using System;
 
 
 namespace TrabalhoFinal
 {
-    /// <summary>
-    /// @brief Exceptions para inserção incorreta de datas.
-    /// @author Sérgio Martins
-    /// <p>a20871@alunos.ipca.pt</p>
-    /// @date 11/25/2021 10:12:57 AM
+    /// Purpose: Classe Exception Data 
+    /// Created by: Jéssica Costa 20872 | Sérgio Martins 20871
+    /// Created on: 11/26/2021 11:51:01 AM
     /// </summary>
+    /// <remarks></remarks>
+    /// <example></example>
     public class DataExcepcoes : ApplicationException
     {
         public DataExcepcoes() : base("Erro de data")
@@ -33,8 +33,6 @@ namespace TrabalhoFinal
         {
             throw new DataExcepcoes(e.Message + " - " + s);
         }
-
-
 
     }
 }

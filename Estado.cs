@@ -1,28 +1,23 @@
-﻿/**
- * @Brief
- * 
- * 
- * @autor: Jéssica Costa & Sérgio Martins
- * @email: a20871@alunos.ipca.pt; a20872@alunos.ipca.pt
- * @data: $time$
- */
+﻿/*
+*	<copyright file="TrabalhoFinal" company="IPCA">
+*		Copyright (c) 2021 All Rights Reserved
+*	</copyright>
+* 	<author>Jéssica Costa 20872 | Sérgio Martins 20871</author>
+*   <date>11/22/2021 14:21:30 AM</date>
+*	<description> </description>
+**/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TrabalhoFinal
 {
-
-    /// <summary>
-    /// @brief 
-    /// @author Sérgio Martins
-    /// <p>a20871@alunos.ipca.pt</p>
-    /// @date 11/23/2021 12:42:23 PM
-    /// </summary>
-    /// 
     public enum Situacao { LIGEIRO, INTERNADO, UCI, ALTA, OBITO };
+
+    /// Purpose: Classe Estado que contém o Estado e data de novo estado 
+    /// Created by: Jéssica Costa 20872 | Sérgio Martins 20871
+    /// Created on: 11/22/2021 10:24:21 AM
+    /// </summary>
+    /// <remarks></remarks>
+    /// <example></example>
     public class Estado
     {
        
@@ -34,7 +29,11 @@ namespace TrabalhoFinal
         #endregion
 
         #region Constructors
-
+        /// <summary>
+        /// Construtor Estado com situação e data manual. Exception para data
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="m"></param>
         public Estado(string d, Situacao m)
         {
             try
@@ -53,6 +52,10 @@ namespace TrabalhoFinal
             this.Sit = m;
         }
 
+        /// <summary>
+        /// Construtor Estado com data automática do dia
+        /// </summary>
+        /// <param name="m"></param>
         public Estado(Situacao m)
         {
             
@@ -65,6 +68,7 @@ namespace TrabalhoFinal
         #endregion
 
         #region Properties
+
         /// <summary>
         /// Propriedade em que se define a data da alteracao do estado
         /// </summary>
@@ -94,8 +98,6 @@ namespace TrabalhoFinal
 
         #endregion
 
-    }
-
-  
+    } 
    
 }
