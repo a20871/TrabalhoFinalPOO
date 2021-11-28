@@ -59,7 +59,7 @@ namespace TrabalhoFinal
         public Estado(Situacao m)
         {
             
-        this.DataNovoEstado = DateTime.Today;
+        this.DataNovoEstado = DateTime.Today.Date;
             
         this.Sit = m;
         }
@@ -75,7 +75,7 @@ namespace TrabalhoFinal
         public DateTime DataNovoEstado
         {
             get { return dataNovoEstado; }
-            set { dataNovoEstado = value.Date; }
+            set { dataNovoEstado = value; }
         }
 
         /// <summary>
@@ -85,19 +85,26 @@ namespace TrabalhoFinal
             get { return sit; }
             set { sit = value; }
         }
-        
+
         #endregion
 
         #region Others
-            
 
-        #endregion
+        public override bool Equals(object obj)
+        {
+            Estado aux = (Estado)obj;
+            if ((aux.DataNovoEstado == this.DataNovoEstado) && (aux.Sit == this.Sit))
+                return true;
+            return false;
+        }
 
-        #region Destructors
+            #endregion
+
+            #region Destructors
 
 
-        #endregion
+            #endregion
 
-    } 
+        } 
    
 }
