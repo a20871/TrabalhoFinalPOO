@@ -303,10 +303,47 @@ namespace TrabalhoFinal
             {
                 if (u.EsteveNumaSituacao(s) == true)
                     a.Add(u);
+               
             }
             return a.Count();
         }
 
+        /// <summary>
+        /// Determina o número de infetados num intervalo de idades específico
+        /// </summary>
+        /// <param name="menor"></param>
+        /// <param name="maior"></param>
+        /// <returns></returns>
+        public int DivideIdades(int menor, int maior)
+        {
+            List<Utente> a = new List<Utente>();
+            foreach (Utente n in doentes)
+            {
+                int i;
+                i=n.CalculaIdade();
+                if ((i >= menor) && (i <= maior))
+                {
+                    a.Add(n);
+                }
+        
+            }
+            return a.Count();
+        }
+
+        public int ContaGenero(Genero g)
+        {
+            List<Utente> a = new List<Utente>();
+            foreach (Utente n in doentes)
+            {
+              
+                if (n.Genero==g)
+                {
+                    a.Add(n);
+                }
+
+            }
+            return a.Count();
+        }
 
         #endregion
 

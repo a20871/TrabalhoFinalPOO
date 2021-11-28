@@ -35,8 +35,8 @@ namespace TrabalhoFinal
             }
             Utente a1 = new Utente("123456789", Situacao.LIGEIRO, "Ana", "09-12-1975", Genero.FEMININO, Distrito.Braga);
             Utente a2 = new Utente("765342145", Situacao.INTERNADO, "Bruno", "09-12-1977", Genero.MASCULINO, Distrito.Porto);
-            Utente a3 = new Utente("123456788", Situacao.UCI, "Carlos", "09-12-1978", Genero.FEMININO, Distrito.Braga);
-            Utente a4 = new Utente("234567321", Situacao.OBITO, "Daniel", "09-12-1981", Genero.FEMININO, Distrito.VianaCastelo);
+            Utente a3 = new Utente("123456788", Situacao.UCI, "Carlos", "09-12-1978", Genero.MASCULINO, Distrito.Braga);
+            Utente a4 = new Utente("234567321", Situacao.OBITO, "Daniel", "09-12-1981", Genero.MASCULINO, Distrito.VianaCastelo);
             Utente a5 = new Utente("123000001", Situacao.OBITO, "Eva", "09-12-1965", Genero.FEMININO, Distrito.Braga);
 
             Utentes u = new Utentes();
@@ -66,8 +66,8 @@ namespace TrabalhoFinal
             Pessoa p1 = new Pessoa("Ana", "09-12-1975", Genero.FEMININO, Distrito.Braga);
             Pessoa p2 = new Pessoa("Pedro", "09-12-1975", Genero.MASCULINO, Distrito.Braga);
 
-            Utente b1 = new Utente("123156789", e2, "Pedro", "09-12-1975", Genero.MASCULINO, Distrito.Braga);
-            Utente b2 = new Utente("123156789", e2, "Quim", "02-12-1975", Genero.MASCULINO, Distrito.Braga);
+            Utente b1 = new Utente("123156700", e2, "Pedro", "09-12-1975", Genero.MASCULINO, Distrito.Braga);
+            Utente b2 = new Utente("123156701", e2, "Quim", "02-12-1975", Genero.MASCULINO, Distrito.Braga);
             Utente b3 = new Utente("123156789", e3, "Quim", "02-12-1975", Genero.MASCULINO, Distrito.Braga);
 
             u.AddUTente(b1);
@@ -97,11 +97,17 @@ namespace TrabalhoFinal
 
             //Mostra idade de um determinado utente (Override ToString()).
             Console.WriteLine(a1.ToString());
+
             u.MostraListaOrdenadaTempoInternamento(Situacao.INTERNADO);
-            //u.RegistaEstadoUtente(estado1, "123456789");
+
+            Console.WriteLine("\nNúmero de óbitos: "+u.ContaUtententeNumaSituacao(Situacao.INTERNADO).ToString());
+
+            Console.WriteLine("\nNúmero de doentes com idades entre 44 e 46: "+u.DivideIdades(44,46));
+
+            Console.WriteLine($"\nNúmero de doentes do género {Genero.MASCULINO}= "+ u.ContaGenero(Genero.MASCULINO));
 
             //Verifica se 2 utentes são o mesmo utente (mesmo nº de utente)
-            Console.WriteLine(a2.Equals(a3));
+            Console.WriteLine(a1.Equals(a3));
 
             Console.ReadKey();
 
