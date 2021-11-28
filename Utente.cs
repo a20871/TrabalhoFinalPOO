@@ -23,7 +23,7 @@ namespace TrabalhoFinal
     /// </summary>
     public enum Distrito { Aveiro, Beja, Braga, Braganca, CasteloBranco, Coimbra, Evora, Faro, Guarda, Leiria, Lisboa, Portalegre, Porto, Santarem, Setubal, VianaCastelo, VilaReal, Viseu };
     #endregion
-  
+
     /// Purpose: Classe Utente que congrega as funcionalidades para Utentes que são diagnosticados com COVID, herda de Pessoa 
     /// Created by: Jéssica Costa 20872 | Sérgio Martins 20871
     /// Created on: 11/26/2021 11:51:01 AM
@@ -34,7 +34,7 @@ namespace TrabalhoFinal
     {
         #region Attributes
 
-        protected string numeroUtente;
+        string numeroUtente;
         List<Estado> n;
         static int totUtententes = 0;
 
@@ -55,7 +55,6 @@ namespace TrabalhoFinal
             this.NumUtente = numero;
             this.AddEstado(s);//adiciona um estado inicial
             totUtententes++;
-
         }
 
         /// <summary>
@@ -72,7 +71,6 @@ namespace TrabalhoFinal
             this.NumUtente = numero;
             Estado e = new Estado(s);//Adiciona Estado com a data do dia
             this.AddEstado(e);
-
             totUtententes++;
 
         }
@@ -94,7 +92,7 @@ namespace TrabalhoFinal
                     {
                         numeroUtente = value;
                     }
-                    else numeroUtente= "000000000"; //Utente não identificado
+                    else numeroUtente = "000000000"; //Utente não identificado
                 }
             }
         }
@@ -121,7 +119,7 @@ namespace TrabalhoFinal
         public void MostraEstadoUtente()
         {
             foreach (Estado e in n)
-                Console.WriteLine($"{e.DataNovoEstado}\t{e.Sit}");
+                Console.WriteLine($"{e.DataNovoEstado.ToString("dd-MM-yyyy")}\t{e.Sit}");
         }
 
         /// <summary>
@@ -149,12 +147,20 @@ namespace TrabalhoFinal
         public bool VerificaSeUtenteEstaInternado(string d, Situacao s)
         {
             DateTime data = Convert.ToDateTime(d).Date;
+            int x = 0;
             foreach (Estado e in n)
             {
-                if ((e.Sit == s) && (e.DataNovoEstado >= data))
+
+                if ((e.Sit == s) && (e.DataNovoEstado <= data))
+                {
+                    x = 1;
                     continue;
-                if ((e.Sit == Situacao.ALTA) && (e.DataNovoEstado >= data))
-                    return true;
+                }
+                if(x==1)
+                    if ((e.Sit == Situacao.ALTA) || (e.Sit == Situacao.OBITO) && (e.DataNovoEstado >= data))
+                        return true;
+                
+                
             }
             return false;
         }
@@ -166,39 +172,58 @@ namespace TrabalhoFinal
         /// <param name="data"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        public bool FiltraUtentePorEstado(Estado e)
+        public bool FiltraUtentePorEstado(string data, Situacao s)
         {
-
-            foreach (Estado a in n)
-            {
-                if (this.n.Contains(e))
-                    return true;
-            }
-            return false;
+            Estado e = new Estado(data,s);
+            return this.n.Contains(e);
+            
         }
 
         /// <summary>
-        /// Calcula tempo na situação s
+        /// Determina a data em que a pessoa entrou em internamento/uci
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public int TempoInternamento(Situacao s)
+      
+        public DateTime DataEstado(Situacao s)
         {
-            DateTime d1 = Convert.ToDateTime("01-01-20").Date;
-            DateTime d2 = Convert.ToDateTime("02-10-30").Date;
-            foreach (Estado e in n)
+           // DateTime d1 = Convert.ToDateTime("00-00-00").Date;
+            foreach (Estado a in n)
             {
-                if (e.Sit == s)
-                    d1 = e.DataNovoEstado;
-                if (e.Sit == Situacao.ALTA)
-                    d2 = e.DataNovoEstado;
+                if (a.Sit == s)
+                    return a.DataNovoEstado;
             }
-            if (DateTime.Compare(d1, d2) < 0)
-                return (d2 - d1).Days;
-            else
-                return 0;
-        }      
+            return DateTime.MinValue;
 
+        }
+
+        /// <summary>
+        /// Determina a data em que a pessoa teve alta
+        /// </summary>
+        /// <returns></returns>
+        public DateTime DataEstadoAlta()
+        {
+            
+            foreach (Estado a in n)
+            {
+                if (a.Sit == Situacao.ALTA|| a.Sit==Situacao.OBITO)
+                    return a.DataNovoEstado;
+            }
+            return DateTime.MinValue;
+
+        }
+
+        /// <summary>
+        /// Conta o tempo que um utente esteve internado
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public int ContaNumeroDiasInternado(Situacao s)
+        {
+            if ((DateTime.Compare(DateTime.MinValue, this.DataEstado(s)) != 0) && (DateTime.Compare(DateTime.MinValue, this.DataEstadoAlta()) != 0))
+                return (this.DataEstadoAlta() - this.DataEstado(s)).Days;
+            return 0;
+        }
         #endregion
 
         #region Others
@@ -212,10 +237,7 @@ namespace TrabalhoFinal
         public override bool Equals(object obj)
         {
             Utente aux = (Utente)obj;
-            if (aux.NumUtente == this.NumUtente)
-
-                return true;
-            else return false;
+            return aux.NumUtente == this.NumUtente;
         }
 
         #endregion

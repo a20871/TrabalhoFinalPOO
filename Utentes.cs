@@ -54,12 +54,10 @@ namespace TrabalhoFinal
         /// Adiciona um utente a lista de utentes caso este nao esteja na lista
         /// </summary>
         /// <param name="u"></param>
-        /// <returns>true caso o utente seja inserido</returns>
-        public bool AddUTente(Utente u)
+        public void AddUTente(Utente u)
         {
             if (!doentes.Contains(u))
                 doentes.Add(u);
-            return true;
         }
 
         /// <summary>
@@ -92,12 +90,13 @@ namespace TrabalhoFinal
         /// </summary>
         /// <param name="data"></param>
         /// <param name="e"></param>       
-        public List<Utente> FiltraEstado(Estado e)
+        public List<Utente> FiltraEstado(Situacao s, string data)
         {
+            //Estado e = new Estado(data, s);
             List<Utente> alta = new List<Utente>();
             foreach (Utente u in doentes)
             {
-                if (u.FiltraUtentePorEstado(e) == true)
+                if (u.FiltraUtentePorEstado(data, s) == true)
                     alta.Add(u);
             }
             return alta;
@@ -110,8 +109,8 @@ namespace TrabalhoFinal
         /// <returns></returns>
         public int ContaUtentePorEstado(Situacao s, string data)
         {
-            Estado e = new Estado(data, s);
-            List<Utente> a = FiltraEstado(e);
+            //Estado e = new Estado(data, s);
+            List<Utente> a = FiltraEstado(s, data);
             return a.Count();
         }
 
@@ -124,7 +123,7 @@ namespace TrabalhoFinal
             List<Utente> internado = new List<Utente>();
             foreach (Utente u in doentes)
             {
-                if (u.TempoInternamento(s) > 0)
+                if (u.ContaNumeroDiasInternado(s) > 0)
                     internado.Add(u);
 
             }
@@ -138,8 +137,8 @@ namespace TrabalhoFinal
         public List<Utente> OrdenaTempoInternamOrdemCrescente(Situacao s)
         {
             List<Utente> internado = CriaListaTodosUtentesInternados(s);
-            internado.OrderBy(u => u.TempoInternamento(s));
-            return internado;
+            List<Utente> ordenado = internado.OrderBy(u => u.ContaNumeroDiasInternado(s)).ToList();
+            return ordenado;
         }
 
         /// <summary>
@@ -150,7 +149,7 @@ namespace TrabalhoFinal
             List<Utente> internado = OrdenaTempoInternamOrdemCrescente(s);
             foreach (Utente u in internado)
             {
-                Console.WriteLine($"{u.NumUtente}\t{u.Nome}\t{u.TempoInternamento(s)}");
+                Console.WriteLine($"\n{u.NumUtente}\t{u.Nome}\t{u.ContaNumeroDiasInternado(s)}");
             }
         }
 
@@ -163,7 +162,7 @@ namespace TrabalhoFinal
         {
             List<Utente> internadoOrdenado = OrdenaTempoInternamOrdemCrescente(s);
             Utente u = internadoOrdenado.First();
-            return u.TempoInternamento(s);
+            return u.ContaNumeroDiasInternado(s);
         }
 
 
@@ -174,8 +173,8 @@ namespace TrabalhoFinal
         public List<Utente> OrdenaTempoInternamentoDecrescente(Situacao s)
         {
             List<Utente> internado = CriaListaTodosUtentesInternados(s);
-            internado.OrderByDescending(u => u.TempoInternamento(s));
-            return internado;
+            List<Utente> ordenado = internado.OrderByDescending(u => u.ContaNumeroDiasInternado(s)).ToList();
+            return ordenado;
         }
 
         /// <summary>
@@ -187,7 +186,7 @@ namespace TrabalhoFinal
         {
             List<Utente> internadoOrdenado = OrdenaTempoInternamentoDecrescente(s);
             Utente u = internadoOrdenado.First();
-            return u.TempoInternamento(s);
+            return u.ContaNumeroDiasInternado(s);
         }
 
         /// <summary>
@@ -200,13 +199,23 @@ namespace TrabalhoFinal
             List<Utente> internado = CriaListaTodosUtentesInternados(s);
             foreach (Utente u in internado)
             {
-                if (MaiorTempoInternado(s) == u.TempoInternamento(s))
+                if (MaiorTempoInternado(s) == u.ContaNumeroDiasInternado(s))
                 {
                     internadoMaisTempo.Add(u);
                 }
             }
             return internadoMaisTempo;
         }
+
+        public void MostraUtenteMaisTempoInternamento(Situacao s)
+        {
+            List<Utente> a = UtenteMaisTempoInternado(s);
+            foreach (Utente u in a)
+            {
+                Console.WriteLine($"{u.NumUtente}\t{u.Nome}\t{u.ContaNumeroDiasInternado(s)}");
+            }
+        }
+
 
         /// <summary>
         /// Cria lista com o utente ou utentes menos tempo internados
@@ -219,7 +228,7 @@ namespace TrabalhoFinal
             List<Utente> internado = CriaListaTodosUtentesInternados(s);
             foreach (Utente u in internado)
             {
-                if (MenorTempoInternado(s) == u.TempoInternamento(s))
+                if (MenorTempoInternado(s) == u.ContaNumeroDiasInternado(s))
                 {
                     internadoMenosTempo.Add(u);
                 }
@@ -235,11 +244,11 @@ namespace TrabalhoFinal
         {
             List<Utente> internado = CriaListaTodosUtentesInternados(s);
             double soma = 0.0;
-            foreach (Utente u in doentes)
+            foreach (Utente u in internado)
             {
-                soma = +u.TempoInternamento(s);
+                soma += u.ContaNumeroDiasInternado(s);
             }
-            return soma / internado.Count();
+            return Math.Round(soma / internado.Count(), 2, MidpointRounding.AwayFromZero);
         }
 
         /// <summary>
@@ -295,7 +304,7 @@ namespace TrabalhoFinal
             {
                 if (u.EsteveNumaSituacao(s) == true)
                     a.Add(u);
-               
+
             }
             return a.Count();
         }
@@ -312,12 +321,12 @@ namespace TrabalhoFinal
             foreach (Utente n in doentes)
             {
                 int i;
-                i=n.CalculaIdade();
+                i = n.CalculaIdade();
                 if ((i >= menor) && (i <= maior))
                 {
                     a.Add(n);
                 }
-        
+
             }
             return a.Count();
         }
@@ -332,8 +341,8 @@ namespace TrabalhoFinal
             List<Utente> a = new List<Utente>();
             foreach (Utente n in doentes)
             {
-              
-                if (n.Genero==g)
+
+                if (n.Genero == g)
                 {
                     a.Add(n);
                 }

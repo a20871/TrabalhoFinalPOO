@@ -33,7 +33,6 @@ namespace TrabalhoFinal
         {
             throw new DataExcepcoes(e.Message + " - " + s);
         }
-
     }
 }
 
